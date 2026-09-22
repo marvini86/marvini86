@@ -16,6 +16,8 @@ A multi-service **Enterprise Resource Planning (ERP) monorepo** designed for sma
 * **🟢 Status:** Fully deployed and active in production.
 * **🔧 Operations:** Multi-service system composed of a core domain API, an administration dashboard, and messaging queues.
 
+![Artisan Platform Interface Overview](https://github.com/marvini86/marvini86/blob/main/images/artisan.png?raw=true)
+
 #### 🛠️ Core Architecture & Tech Stack
 * **Backend API:** Go (Gin Framework, GORM) • JWT & OAuth 2.0 • PostgreSQL • OpenAPI/Swagger (Orval Client Generator) • **Azure Service Bus**
 * **Frontend Apps:** React • TanStack Query • Tailwind CSS • React Router
@@ -37,6 +39,8 @@ I designed and engineered this entire platform end-to-end—building the high-pe
 
 * **🟢 Status:** Fully deployed and active in production.
 * **🔧 Operations:** Multi-service system composed of a central API, an admin portal, and dedicated hardware media player clients.
+
+![Panel Management App Interface Overview](https://github.com/marvini86/marvini86/blob/main/images/panel.png?raw=true)
 
 #### 🛠️ Core Architecture & Tech Stack
 * **Backend API:** Go (Gin Framework, GORM) • JWT & OAuth 2.0 • PostgreSQL • OpenAPI/Swagger (Orval Client Generator)
