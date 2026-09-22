@@ -4,114 +4,36 @@ I'm a **Software Developer** focused on building full-stack applications, backen
 
 I enjoy turning ideas into real products, working across the entire development lifecycle — from designing and developing applications to testing, deployment, and infrastructure.
 
-I also have experience working on **corporate and proprietary software projects**. Due to software ownership and confidentiality restrictions, I cannot publicly share those projects.
+> 🔒 **Corporate & Proprietary Software:** Due to software ownership and confidentiality restrictions, my core commercial projects are hosted in private repositories. Below, you can find the production-ready applications I designed, built, and deployed independently.
 
-Below are some of the applications I have designed, developed, and delivered that I can share publicly.
+---
 
+## 🚀 Live SaaS Products & Applications
 
+### 📺 Panel Management App (OOH Media Platform)
+A full-stack **Out-of-Home (OOH) media management platform** designed to orchestrate and stream digital advertising content across distributed physical panels. 
 
-## Projects
+I designed and engineered this entire platform end-to-end—building the high-performance Go API, the admin control center, and the edge media player that runs on connected physical hardware.
 
+* **🌐 Live Production App:** [Link to your App here, e.g., ://panelapp.com]
+* **🔑 Guest/Demo Access:** **Username:** `demo@example.com` | **Password:** `Demo1234` *(Recommended so evaluators don't need to register)*
+* **⚡ Media Player Instance:** [Link to player instance, e.g., ://panelapp.com]
 
-## Panel Management App
+#### 🛠️ Core Architecture & Tech Stack
+* **Backend API:** Go (Gin Framework, GORM) • JWT & OAuth 2.0 • PostgreSQL • OpenAPI/Swagger (Orval)
+* **Frontend Apps:** React • TanStack Query • Tailwind CSS • React Router
+* **Cloud & Infrastructure:** Oracle Cloud VPS (Backend hosting) • Azure Static Web Apps (Frontend) • Azure API Management (API Gateway) • Azure Blob Storage (Media Asset Delivery) • Docker
+* **CI/CD & DevOps:** GitHub Actions Automated Pipelines • Git
 
-A full-stack **OOH (Out-of-Home) media management platform** designed to manage digital media displayed across physical advertising panels.
+#### 🏗️ System Components & Engineering Highlights
+* **Distributed Media Player:** A lightweight React-based engine deployed on edge OOH devices, optimized to pull scheduled playlists and cache/render media reliably.
+* **Granular Content Scheduling:** Built a robust scheduling engine in Go to handle complex timeline logic, layout distribution, and device-oriented playlist delivery.
+* **Production-Grade Infrastructure:**
+  * Implemented an automated **CI/CD pipeline via GitHub Actions** that builds Docker containers and triggers production updates on every push.
+  * Secured and rate-limited public endpoints using **Azure API Management**.
+  * Optimized media serving costs and latency by decoupling file management into **Azure Blob Storage**.
+* **Quality Assurance:** Covered with Unit, Integration, and End-to-End (E2E) automated tests to ensure zero-downtime deployments.
 
-I designed and developed the platform as a complete system composed of a **Go backend API**, a **React-based administration dashboard**, and a **React media player** responsible for running scheduled content on connected devices.
+---
 
-### Architecture
-
-- **Backend:** Go + Gin + GORM
-- **Authentication:** JWT + OAuth 2.0
-- **Database:** PostgreSQL
-- **Administration Dashboard:** React
-- **Media Player:** React
-- **API Documentation:** OpenAPI + Swagger
-- **API Client:** Orval-generated client
-- **Media Storage:** Azure Blob Storage
-- **API Management:** Azure API Management
-- **Frontend Hosting:** Azure Static Web Apps
-- **Backend Hosting:** Oracle Cloud VPS
-- **Containerization:** Docker
-- **CI/CD:** GitHub Actions
-- **Version Control:** Git + GitHub
-
-### Main Features
-
-- Media management
-- Playlist management
-- Digital panel management
-- Content scheduling
-- Scheduled media playback
-- Device-oriented media player
-- Administrative dashboard
-- REST API
-- Authentication and authorization
-- Media storage and delivery through Azure Blob Storage
-- API management through Azure API Management
-- OpenAPI/Swagger documentation
-
-### System Components
-
-The platform is composed of three main applications:
-
-- `api/` — Go backend responsible for business logic, authentication, media, playlists, panels, scheduling, and API operations.
-- `web/` — React administration dashboard used to manage the OOH network and its content.
-- `player/` — React-based player deployed on OOH devices to retrieve and play scheduled media.
-
-### Frontend
-
-The administration interface uses:
-
-- React
-- TanStack Query
-- React Router
-- Tailwind CSS
-- React Icons
-- Orval for generating the API client from the OpenAPI specification
-
-The frontend is deployed using **Azure Static Web Apps**.
-
-### Backend
-
-The backend API is built with:
-
-- Go
-- Gin
-- GORM
-- PostgreSQL
-- JWT
-- OAuth 2.0
-- CORS
-- Swagger/OpenAPI
-- Logging
-
-The API is deployed on an **Oracle Cloud VPS**, with **Azure API Management** used as the API management layer.
-
-### Infrastructure
-
-The production architecture uses cloud services for different parts of the platform:
-
-- **Oracle Cloud VPS** — backend API hosting
-- **Azure Static Web Apps** — frontend hosting
-- **Azure API Management** — API gateway and management
-- **Azure Blob Storage** — storage for media assets
-- **Docker** — application containerization
-- **GitHub Actions** — CI/CD
-
-### Testing & Engineering
-
-The project includes:
-
-- Unit tests
-- Integration tests
-- End-to-end tests
-- OpenAPI-based API documentation
-- Docker-based development
-- CI/CD pipelines
-- Git-based version control
-
-### My Role
-
-I designed and developed the platform end-to-end, covering the **backend API, administration dashboard, media player, database integration, authentication, media storage, API management, testing, deployment, containerization, and CI/CD infrastructure**.
-
+[Aguardando o segundo SaaS! Assim que você mandar, ele entra exatamente aqui com a mesma estrutura de alto impacto]
