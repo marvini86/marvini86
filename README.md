@@ -4,32 +4,29 @@ I'm a **Software Developer** focused on building full-stack applications, backen
 
 I enjoy turning ideas into real products, working across the entire development lifecycle — from designing and developing applications to testing, deployment, and infrastructure.
 
-> 🔒 **Corporate & Proprietary Software:** Due to software ownership and confidentiality restrictions, my core commercial projects are hosted in private repositories. Below, you can find the production-ready applications and proprietary SaaS platforms I have designed, built, and deployed independently.
+> 🔒 **Proprietary Software & Production Safety:** To protect production infrastructure from unauthorized access, automated scanning, and malicious requests, all direct URLs, endpoints, and credentials for my live SaaS applications are kept strictly private. Below is the architectural and engineering breakdown of the production-ready systems I design, build, and maintain.
 
 ---
 
 ## 🚀 Live SaaS Products & Applications
 
-### 🛠️ Artisan Platform (AI-Driven Conversational ERP)
-A multi-service **Conversational ERP monorepo** designed to transform natural language into structured business operations. Built specifically for non-tech-savvy artisans (e.g., crochet creators), the platform abstracts complex ERP interfaces entirely behind a **WhatsApp chat interface**.
+### 🛠️ Artisan Platform (Event-Driven Multi-Tenant ERP)
+A multi-service **Enterprise Resource Planning (ERP) monorepo** designed for small business management, inventory orchestration, and financial tracking. The platform operates securely through a React-based administration dashboard and a core Go API, leveraging asynchronous messaging for business logic decoupled executions.
 
-The system utilizes an AI agent to interpret raw speech/text, resolve linguistic references, and interact with a strict domain API, ensuring AI is never the direct source of truth.
+* **🟢 Status:** Fully deployed and active in production.
+* **🔧 Operations:** Multi-service system composed of a core domain API, an administration dashboard, and messaging queues.
 
-* **🌐 Conversational Interface:** Operating via WhatsApp API Webhooks.
-* **🔧 Tech Stack:** Go (Gin Framework, GORM) • PostgreSQL • LLM APIs • Docker & Docker Compose
-* **🌐 Web Admin Control:** React Dashboard *(Under development for metrics visual tracking)*
+#### 🛠️ Core Architecture & Tech Stack
+* **Backend API:** Go (Gin Framework, GORM) • JWT & OAuth 2.0 • PostgreSQL • OpenAPI/Swagger (Orval Client Generator) • **Azure Service Bus**
+* **Frontend Apps:** React • TanStack Query • Tailwind CSS • React Router
+* **Cloud & Infrastructure:** Oracle Cloud VPS (Backend hosting) • Azure Static Web Apps (Frontend) • Azure API Management (API Gateway) • Azure Blob Storage (Media/Asset Delivery) • Docker
+* **CI/CD & DevOps:** GitHub Actions Automated Pipelines • Git
 
-#### 🏗️ System Architecture & Data Flow
-To ensure data integrity, the system is strictly split into decoupled layers:
-
-WhatsApp Client -> **Intake Orchestrator (Go)** -> LLM API (Structured JSON)
-* The Orchestrator then validates and sends an HTTP REST request to:
-**Core Domain API (Go)** -> **PostgreSQL Database**
-
-#### 🧠 Service Breakdown & Engineering Highlights
-* **intake-orchestrator/ (Go + Gin):** Handles WhatsApp webhooks, chat context state management, idempotency controls, and prompts external LLMs. It forces the AI to output strict structured JSON schemas, detects missing transaction details, and translates backend responses back into conversational natural language.
-* **api/ (Go + Gin + GORM):** The single source of truth and the only layer authorized to connect to PostgreSQL. It handles multi-tenant domain rules for Customers, Materials, Stock Movements, Orders, Sales, and Costs.
-* **Decoupled AI Pattern:** The LLM *interprets* intent, the Orchestrator *coordinates*, the Domain API *validates/decides*, and PostgreSQL *persists*. This prevents AI hallucinations from corrupting financial or inventory data.
+#### 🏗️ System Components & Engineering Highlights
+* **Administration Dashboard:** A React interface used to manage multi-tenant domain operations, metrics tracking, and product distribution.
+* **Core API Operations:** A high-performance Go API instance responsible for handling client requests, payload mapping, dynamic multi-tenant verification, and request logging.
+* **Event-Driven Inventory Automation:** Integrated **Azure Service Bus** to handle asynchronous inventory lifecycle events. Whenever a sale is finalized, cancelled, or updated, the core API publishes transaction events to a message queue. Dedicated consumer routines process these events asynchronously to safely deduct or revert physical stock, ensuring ledger resilience and preventing database race conditions during concurrent usage.
+* **Production-Grade Infrastructure & QA:** Automated CI/CD pipeline via GitHub Actions that builds Docker containers and triggers production updates on push. Secured and rate-limited public endpoints using Azure API Management, and covered with automated tests.
 
 ---
 
@@ -38,9 +35,8 @@ A full-stack **Out-of-Home (OOH) media management platform** designed to orchest
 
 I designed and engineered this entire platform end-to-end—building the high-performance Go API, the admin control center, and the edge media player that runs on connected physical hardware.
 
-* **🌐 Live Production App:** [Link to your App here]
-* **🔑 Guest/Demo Access:** **Username:** `demo@example.com` | **Password:** `Demo1234`
-* **⚡ Media Player Instance:** [Link to player instance]
+* **🟢 Status:** Fully deployed and active in production.
+* **🔧 Operations:** Multi-service system composed of a central API, an admin portal, and dedicated hardware media player clients.
 
 #### 🛠️ Core Architecture & Tech Stack
 * **Backend API:** Go (Gin Framework, GORM) • JWT & OAuth 2.0 • PostgreSQL • OpenAPI/Swagger (Orval Client Generator)
@@ -63,11 +59,12 @@ I designed and engineered this entire platform end-to-end—building the high-pe
 
 * **Languages:** Go (Golang), JavaScript/TypeScript, SQL
 * **Backend Frameworks:** Gin Gonic, GORM
+* **Messaging & Events:** Azure Service Bus, Event-Driven Architecture (EDA)
 * **Frontend Tools:** React, TanStack Query, Tailwind CSS, React Router
 * **Databases & Storage:** PostgreSQL, Azure Blob Storage
 * **DevOps & Cloud:** Docker, Docker Compose, GitHub Actions, Oracle Cloud Infrastructure (OCI), Azure API Management, Azure Static Web Apps, Git
-* **Architecture Patterns:** Monorepos, RESTful APIs, LLM Orchestration, Conversational UIs, Micro-services decoupling
+* **Architecture Patterns:** Monorepos, RESTful APIs, Event-Driven Processing, Inventory Decoupling, Eventual Consistency
 
 ---
 
-📬 **How to reach me:** Feel free to connect via LinkedIn or open a discussion if you'd like to talk about full-stack architectures, Go backend optimization, or AI orchestration!
+📬 **How to reach me:** Feel free to connect via LinkedIn or open a discussion if you'd like to talk about full-stack architectures, Go backend optimization, or event-driven systems!
