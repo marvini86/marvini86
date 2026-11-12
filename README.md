@@ -10,6 +10,31 @@ I enjoy turning ideas into real products, working across the entire development 
 
 ## 🚀 Live SaaS Products & Applications
 
+### 🤖 My Exp (AI Expense Assistant)
+An **AI assistant for family finances**: snap a photo of a supermarket receipt or upload a utility bill, then just ask — *"How much did I spend on groceries this month?"*, *"Where is tomato cheapest?"*, *"Do I have any bills to pay?"*. Every answer comes with the numbers **and links to the receipts they came from**. Built for my family, starting with my mom, who kept every receipt in a notebook.
+
+* **🟢 Status:** Deployed and active in production (private); source code published as a showcase.
+* **📦 Source:** [github.com/marvini86/my-exp](https://github.com/marvini86/my-exp) — architecture, deployment guide and tests.
+
+![My Exp Assistant Overview](https://github.com/marvini86/marvini86/blob/main/images/myexp.png?raw=true)
+
+#### 🛠️ Core Architecture & Tech Stack
+* **Backend API & Worker:** Python • FastAPI • SQLAlchemy • Pydantic • LangChain • PostgreSQL (Row-Level Security) • Qdrant (vector search)
+* **Frontend App:** Next.js (App Router, Server Components & Server Actions) • TypeScript • Tailwind CSS • OpenAPI-generated client
+* **AI:** Multimodal vision LLMs (receipt reading) • Embeddings & RAG • Tool use • Free-tier models (Gemini, Groq, Cloudflare Workers AI, OpenRouter) behind a router with fallback
+* **Cloud & Infrastructure:** Oracle Cloud ARM VM • Docker • Caddy (automatic HTTPS) • Azure Blob Storage • Google Sign-In
+* **CI/CD & DevOps:** GitHub Actions (tests → ARM images → SSH deploy) • AI evaluations outside CI
+
+#### 🏗️ System Components & Engineering Highlights
+* **Document ingestion pipeline:** a worker reads photos, PDFs and NF-e XML (vision LLM or deterministic XML parser), validates the 44-digit access key, re-reads with another model when the items don't add up to the total, deduplicates the same receipt sent twice, and builds the knowledge base (PostgreSQL + Qdrant).
+* **The LLM never writes SQL or does math:** a planner turns the question into a fixed intent + parameters, parameterized SQL computes the facts, and a second call writes the answer — with every `[D1]` citation verified by code.
+* **Product understanding:** receipts abbreviate everything (`CSCOX LAR C/DORSO` is chicken); an AI step maps each item to a readable name and product group, cached per account, powering answers like *"how much did I spend on produce?"*.
+* **Free AI that keeps working:** multi-provider routing with per-model and per-provider cooldowns; when every free quota is exhausted, jobs are postponed without failing.
+* **Multi-tenant by design:** PostgreSQL Row-Level Security on every table; the API and the worker run as roles that cannot bypass it.
+* **Quality:** 550+ unit and integration tests against real PostgreSQL and Qdrant, plus evaluations with the real AI (known-answer questions and degraded receipt photos).
+
+---
+
 ### 🛠️ Artisan Platform (Event-Driven Multi-Tenant ERP)
 A multi-service **Enterprise Resource Planning (ERP) monorepo** designed for small business management, inventory orchestration, and financial tracking. The platform operates securely through a React-based administration dashboard and a core Go API, leveraging asynchronous messaging for business logic decoupled executions.
 
@@ -61,14 +86,15 @@ I designed and engineered this entire platform end-to-end—building the high-pe
 
 ## 🛠️ Technical Toolkit
 
-* **Languages:** Go (Golang), JavaScript/TypeScript, SQL
-* **Backend Frameworks:** Gin Gonic, GORM
-* **Messaging & Events:** Azure Service Bus, Event-Driven Architecture (EDA)
-* **Frontend Tools:** React, TanStack Query, Tailwind CSS, React Router
-* **Databases & Storage:** PostgreSQL, Azure Blob Storage
-* **DevOps & Cloud:** Docker, Docker Compose, GitHub Actions, Oracle Cloud Infrastructure (OCI), Azure API Management, Azure Static Web Apps, Git
-* **Architecture Patterns:** Monorepos, RESTful APIs, Event-Driven Processing, Inventory Decoupling, Eventual Consistency
+* **Languages:** Go (Golang), Python, JavaScript/TypeScript, SQL
+* **Backend Frameworks:** Gin Gonic, GORM, FastAPI, SQLAlchemy, Pydantic
+* **AI & LLMs:** LangChain, RAG, multimodal vision models, tool use, embeddings, Qdrant, multi-provider routing with fallback, LLM evaluations
+* **Messaging & Events:** Azure Service Bus, Event-Driven Architecture (EDA), PostgreSQL job queues
+* **Frontend Tools:** React, Next.js, TanStack Query, Tailwind CSS, React Router
+* **Databases & Storage:** PostgreSQL (Row-Level Security), Qdrant, Azure Blob Storage
+* **DevOps & Cloud:** Docker, Docker Compose, GitHub Actions, Oracle Cloud Infrastructure (OCI), Caddy, Azure API Management, Azure Static Web Apps, Git
+* **Architecture Patterns:** Monorepos, RESTful APIs, Event-Driven Processing, Inventory Decoupling, Eventual Consistency, Multi-Tenancy
 
 ---
 
-📬 **How to reach me:** Feel free to connect via LinkedIn or open a discussion if you'd like to talk about full-stack architectures, Go backend optimization, or event-driven systems!
+📬 **How to reach me:** Feel free to connect via LinkedIn or open a discussion if you'd like to talk about full-stack architectures, AI assistants, Go backend optimization, or event-driven systems!
